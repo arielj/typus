@@ -40,4 +40,24 @@
     </div>
   <% end %>
 
+  <% if Typus.dashboard_show_tableless -%>
+    <% rs = admin_user.tableless_resources %>
+    <% if rs.any? %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t("typus.application.tableless_resources", default: 'Others') %></th>
+          </tr>
+        </thead>
+
+        <% rs.each do |r| %>
+          <tr>
+            <td>
+              <%= link_to r, "/admin/#{r.underscore}" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  <% end %>
 </div>

@@ -110,6 +110,14 @@ module Typus
   mattr_accessor :bootstrap_version
   @@bootstrap_version = '3.3.5'
 
+  #adds a table with the tableless resources at the end of dashboard index
+  mattr_accessor :dashboard_show_tableless
+  @@dashboard_show_tableless = false
+
+  #adds a menu item with the tableless resources at the end of the navbar
+  mattr_accessor :navbar_show_tableless
+  @@navbar_show_tableless = false
+
   class << self
 
     # Default way to setup typus. Run `rails generate typus` to create a

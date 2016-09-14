@@ -11,6 +11,10 @@ module Typus
           Typus::Configuration.roles[role.to_s].compact
         end
 
+        def tableless_resources
+          resources.keys.reject{|k| models.include?(k)}
+        end
+
         def models
           Typus.models.delete_if { |m| cannot?('read', m) }
         end
