@@ -56,7 +56,8 @@ module Typus
           # Admin can update himself except setting the status to false!. Other
           # users can update their profile as the attributes (role & status)
           # are protected.
-          status_as_boolean = params[@object_name][:status] == '1' ? true : false
+          status_as_boolean = params[@object_name][:status] == '1'
+          status_as_boolean = @item.status if params[@object_name][:status].nil?
 
           status_changed = !(@item.status == status_as_boolean)
           role_changed = !(@item.role == params[@object_name][:role])
