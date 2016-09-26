@@ -21,6 +21,11 @@
         </li>
       <% end %>
     <% end %>
+    <% resources_actions_for_current_role.map do |body, url, options| %>
+      <li class="<%= action_name.eql?(body.underscore.gsub(' ','_')) ? 'active' : 'inactive' %>">
+        <%= link_to t(body), params.merge(url).permit!, options %>
+      </li>
+    <% end %>
   </ul>
 
 <% end %>
