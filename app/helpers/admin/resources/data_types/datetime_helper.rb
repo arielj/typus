@@ -11,7 +11,11 @@ module Admin::Resources::DataTypes::DatetimeHelper
   alias_method :table_timestamp_field, :table_datetime_field
 
   def display_datetime(item, attribute)
-    I18n.l(item.send(attribute), format: @resource.typus_date_format(attribute))
+    if d = item.send(attribute)
+      I18n.l(d, format: @resource.typus_date_format(attribute))
+    else
+      '&mdash;'.html_safe
+    end
   end
 
   alias_method :display_date, :display_datetime
