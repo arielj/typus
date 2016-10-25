@@ -48,15 +48,17 @@ module Admin::Resources::DataTypes::BelongsToHelper
   end
 
   def display_belongs_to(item, attribute)
-    data = item.send(attribute)
+    if data = item.send(attribute)
+      options = {
+        controller: data.class.to_resource,
+        action: action_name,
+        id: data.id,
+      }
 
-    options = {
-      controller: data.class.to_resource,
-      action: action_name,
-      id: data.id,
-    }
-
-    params[:_popup] ? data.to_label : link_to(data.to_label, options)
+      params[:_popup] ? data.to_label : link_to(data.to_label, options)
+    else
+      mdash
+    end
   end
 
   def belongs_to_filter(filter)
