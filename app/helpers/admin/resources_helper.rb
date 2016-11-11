@@ -25,4 +25,11 @@ module Admin::ResourcesHelper
     end
   end
 
+  def get_params
+    request.query_string.split(/&/).inject({}) do |hash, setting|
+      key, val = setting.split(/=/)
+      hash[key.to_sym] = val
+      hash
+    end
+  end
 end

@@ -13,7 +13,7 @@
   <%= admin_display_flash_message %>
 
   <% params[:action] = 'update' %>
-  <%= render 'form', locals = { options: params } %>
+  <%= render 'form', locals = { options: get_params } %>
 
   <% unless headless_mode? %>
     <%= render 'admin/shared/modals' %>
