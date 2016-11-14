@@ -12,8 +12,7 @@
 
   <%= admin_display_flash_message %>
 
-  <% params[:action] = 'update' %>
-  <%= render 'form', locals = { options: get_params } %>
+  <%= render 'form', locals = { options: params.permit(:controller, :action, :id).merge(action: 'update') } %>
 
   <% unless headless_mode? %>
     <%= render 'admin/shared/modals' %>
