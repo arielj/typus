@@ -16,7 +16,7 @@ module Admin::Resources::DataTypes::PaperclipHelper
       attribute_i18n = @item.class.human_attribute_name(attribute)
       link = link_to(
         t('typus.buttons.remove'),
-        { action: 'update', id: @item.id, _nullify: attribute, _continue: true },
+        { action: 'update', id: @item.id, _nullify: attribute, _continue: true, method: :patch },
         { data: { confirm: t('typus.shared.confirm_question') } }
       )
 
