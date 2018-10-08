@@ -2,7 +2,7 @@ module Admin::Resources::ListHelper
 
   def list_actions
     resources_actions_for_current_role.map do |body, url, options|
-      path = params.dup.merge!(url).compact.cleanup
+      path = params.dup.merge!(url).permit!.to_h.compact.cleanup
       link_to t(body), path, options
     end.compact.reverse.join(' / ').html_safe
   end
